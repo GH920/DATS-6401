@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visualization of Top Countries</title>
+    <!-- CSS style here -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- JS here -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <h1><a href="index.html">VISUALIZATION<span id="logo_text2"><br>10 TOP COUNTRIES</span></a></h1>
+                    <br>
+                    <h2>Source: This website will analyze these datasets: GDP, military spending, healthcare spending, educational spending and population (from <a href="https://data.worldbank.org/">World Bank Open Data</a>).
+                    <br>Method: Data visualization.
+                    </h2>
+                    
+                </div><!-- logo_text -->
+            </div><!-- logo -->
+            
+            <div id="menubar">
+                <div id="menu">
+                    <ul id="menu">
+                        <li class="selected"><a href="index.html">Home</a></li>
+                        <li><a href="conclusion.html">Conclusion</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div><!-- menu -->
+            </div><!-- menubar -->
+
+        </div><!-- header -->
+        <div id="page_wrapper">
+            <div id="site_content">
+                <div class="sidebar">
+                    <ul>
+                        <li onclick="onClickNavigator()">General view</li>
+                        <li onclick="onClickNavigator()">Compare all together</li>
+                        <li onclick="onClickNavigator()">Compare without GDP</li>
+                        <li onclick="onClickNavigator()">Per capita comparison</li>
+                        <li onclick="onClickNavigator()">Growth comparison</li>
+                        <li onclick="onClickNavigator()">Compare by yourself</li>
+                    </ul>
+                </div><!-- sidebar-->
+                <div id="content">
+                    <div id="content_main">
+                        <div class="navigator">
+                            <h3>General View of These 10 Countries
+                                <select onchange="getDiffPlot(this)">
+                                    <option value="GDP">GDP (Million $)</option>
+                                    <option value="Population">Population (Million)</option>
+                                    <option value="Military">Military (Million $)</option>
+                                    <option value="Healthcare">Healthcare (Million $)</option>
+                                    <option value="Education">Education (Million $)</option>
+                                </select>
+                            </h3>
+                            <button onclick="collapse('general_view_div')">Collapse</button>
+                            <div id="general_view_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Military, Health, Education Spending vs. GDP in 
+                                <select onchange="getTimePlot1(this)">
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </h3>
+                            <button onclick="collapse('compare_gdp_div')">Collapse</button>
+                            <div id="compare_gdp_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Health, Education Spending vs. Military Spending in 
+                                <select onchange="getTimePlot2(this)">
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </h3>
+                            <button onclick="collapse('compare_military_div')">Collapse</button>
+                            <div id="compare_military_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Per Capita Education vs. Per Capita GDP in 
+                                <select onchange="getTimePlot3(this)">
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </h3>
+                            <button onclick="collapse('pcedu_gdp_div')">Collapse</button>
+                            <div id="pcedu_gdp_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Per Capita Healthcare vs. Per Capita GDP in 
+                                <select onchange="getTimePlot4(this)">
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </h3>
+                            <button onclick="collapse('pchealth_gdp_div')">Collapse</button>
+                            <div id="pchealth_gdp_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+                        
+                        <div class="navigator">
+                            <h3>Per Capita Military vs. Per Capita GDP in 
+                                <select onchange="getTimePlot5(this)">
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                            </h3>
+                            <button onclick="collapse('pcmilitary_gdp_div')">Collapse</button>
+                            <div id="pcmilitary_gdp_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Growth of Healthcare in Values</h3>
+                            <button onclick="collapse('growth_health_div')">Collapse</button>
+                            <div id="growth_health_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Growth of Healthcare in Percentage</h3>
+                            <button onclick="collapse('pct_growth_health_div')">Collapse</button>
+                            <div id="pct_growth_health_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Growth of Education in Values</h3>
+                            <button onclick="collapse('growth_edu_div')">Collapse</button>
+                            <div id="growth_edu_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+
+                        <div class="navigator">
+                            <h3>Growth of Education in Percentage</h3>
+                            <button onclick="collapse('pct_growth_edu_div')">Collapse</button>
+                            <div id="pct_growth_edu_div" class="graph_div" style="width: 700px; height: 400px;"></div>
+                        </div><!-- navigator -->
+                        
+                    </div> <!-- content_main -->
+                </div><!-- content -->
+            </div><!-- site_content -->
+        </div><!-- page_wrapper -->
+
+        <div id="footer">
+            Copyright &copy; 
+            <script>
+                var d = new Date();
+                document.write(d.getFullYear());
+            </script>
+            | <a href="https://www.linkedin.com/in/gaofenghuang/">Gaofeng Huang</a>
+            | <a href="https://github.com/GH920">GitHub</a>
+        </div><!-- footer -->
+    </div><!-- main -->
+</body>
+</html>
