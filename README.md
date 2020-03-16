@@ -19,4 +19,4 @@ This website will analyze these datasets: GDP, military spending, healthcare spe
 Data visualization by web development.
 
 ## Webpage View
-Link: <a href="https://gh920.github.io/DATS-6401/">Click to see this webpage</a>.
+Link: <a href="https://gh920.github.io/Top-Countries-Visualization/">Click to see this webpage</a>.
